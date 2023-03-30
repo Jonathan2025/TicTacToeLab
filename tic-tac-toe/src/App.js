@@ -28,11 +28,17 @@ import { useState } from "react";
 
 
 
-    // 25 so we want to avoid clicking on a square multiple times, so what we cna do is add a return statement
-    // IF it has already been clicked on 
-    if (squares[i]) {
+    //27 add in a calculate winner function call from the function below 
+    if (calculateWinner(squares) || squares[i]) {
       return;
     }
+
+
+    // 25 so we want to avoid clicking on a square multiple times, so what we cna do is add a return statement
+    // IF it has already been clicked on 
+    // if (squares[i]) {
+    //   return;
+    // }
 
 
 
@@ -55,6 +61,17 @@ import { useState } from "react";
 
     
   }
+
+
+
+
+
+
+
+
+
+
+
 
 
   //3 note that you need to put children tags within a parent tag as you see here 
@@ -103,6 +120,36 @@ import { useState } from "react";
     </>
   )
 }
+
+
+
+
+// 26 We want to add in a function that will handle the winner 
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ]
+
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  return null;
+}
+
+
+
+
+
 
 
 
