@@ -1,4 +1,4 @@
-export default function Square() {
+export default function Board() {
   //3 note that you need to put children tags within a parent tag as you see here 
   return (
     <>
