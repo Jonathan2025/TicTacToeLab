@@ -1,9 +1,42 @@
 // 4 Create a new Sqaure component
 
+// 9 As a next step, you want sqaure component to "remember" that it got clicked and fill it in with an "X" mark
+// To "Remember" things, components use states 
+import { useState } from 'react';
+
+
+
+
+
+
+
+
 
 //6 now we need to pass in the value props
-function Square({value}) {
-    return <button className="square">{value}</button>;
+// 12 now once we start using states we dont need the props
+function Square() {
+    //9// Remember that we used value below 
+    const [value, setValue] = useState(null);
+
+
+
+   //8 lets fill the square component with an X when we click on it, 
+   // Declare a handleClick inside of the square
+   function handleClick() {
+    //11 instead of console.log click we can change the state to setValue('X")
+    console.log('clicked!');
+    setValue('X');
+    }
+   
+    return(
+    <button 
+    className="square"
+    //9 add in an onClick Attribute 
+    onClick ={handleClick}
+    >
+        {value}
+    </button>
+    )
   }
 
 export default Square
