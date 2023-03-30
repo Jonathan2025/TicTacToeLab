@@ -12,7 +12,8 @@ import { useState } from "react";
   //14 now we creata an Array(9).fill(null) meaning we create an array in which all the sqaures are initially null 
   const [squares, setSquares] = useState(Array(9).fill(null))
 
-
+  //23 NOW ITS TIME TO ADD THE MAJOR FEATURE OF THE GAME, adding in the "O"
+  const [xIsNext, setXIsNext] = useState(true);
 
 
   // 20 now we want to create a handleClick Function
@@ -20,9 +21,39 @@ import { useState } from "react";
   function handleClick(i) {
     // 21 here we are creating a copy of the squares array (nextSquares) with the slice method 
     // SO WE ARE RE-RENDERING BASED ON WHAT IS IN nextSquares
+    // const nextSquares = squares.slice();
+    // nextSquares[i] = 'X';
+    //setSquares(nextSquares);
+
+
+
+
+    // 25 so we want to avoid clicking on a square multiple times, so what we cna do is add a return statement
+    // IF it has already been clicked on 
+    if (squares[i]) {
+      return;
+    }
+
+
+
+
+
+    //24 now we need to edit the handleClick funciton to flip the value of xIsNext
     const nextSquares = squares.slice();
-    nextSquares[i] = 'X';
+    // basdically here first if we see above, xIsNext is initally set to "true", therefore the first click is 
+    // set to be "X"
+    if (xIsNext) {
+      nextSquares[i] = "X";
+    } else {
+      nextSquares[i] = "O";
+    }
+
+    // then once clicked, we want to make the next click to NOT be xIsNext so itll be false and O will be put down
     setSquares(nextSquares);
+    setXIsNext(!xIsNext);
+
+
+    
   }
 
 
